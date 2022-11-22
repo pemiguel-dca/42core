@@ -1,46 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printhex.c                                      :+:      :+:    :+:   */
+/*   ft_printpointer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 16:45:43 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/11/22 20:20:09 by pemiguel         ###   ########.fr       */
+/*   Created: 2022/11/22 16:19:37 by pemiguel          #+#    #+#             */
+/*   Updated: 2022/11/22 20:09:52 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	do_len(size_t n)
+int	do_pointer(size_t pointer)
 {
-	int	len;
+	size_t	almost_res;
+	char	*res;
+	int		len;
 
-	len = 1;
-	while (n > 15)
+	if (pointer == 0)
 	{
-		n = n / 16;
-		len++;
+		ft_putstr("(nil)");
+		return (5);
 	}
-	return (len);
-}
-
-int	do_hex(size_t n, char c)
-{
-	int	len;
-
-	len = do_len(n);
-	if (n > 15)
-	{
-		do_hex(n / 16, c);
-		do_hex(n % 16, c);
-	}
-	else
-	{
-		if (c == 'x')
-			ft_putchar(BASE_LOWER[n]);
-		else
-			ft_putchar(BASE_UPPER[n]);
-	}
-	return (len);
+	len = 0;
+	ft_putstr("0x");
+	len = do_hex(pointer, 'x');
+	return (len + 2);
 }

@@ -1,52 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr_dec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 15:31:00 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/11/22 20:20:07 by pemiguel         ###   ########.fr       */
+/*   Created: 2022/11/22 18:31:07 by pemiguel          #+#    #+#             */
+/*   Updated: 2022/11/22 20:20:06 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-size_t	ft_putstr(char *str)
-{
-	size_t	i;
-
-	if (!str)
-		ft_putstr("(null)");
-	i = 0;
-	while (str[i])
-		write(1, &str[i++], 1);
-	return (i);
-}
-
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	len_u(int n)
+int	len_dec(int n)
 {
 	int	len;
 
 	len = 0;
 	if (n == 0)
 		return (1);
+	if (n < 0)
+	{
+		len++;
+		n = -n;
+	}
 	while (n != 0)
 	{
 		n = n / 10;
@@ -55,11 +32,22 @@ int	len_u(int n)
 	return (len);
 }
 
-size_t	ft_putnbr(size_t n)
+int	ft_putnbr_dec(int n)
 {
-	size_t	len;
+	int	len;
 
-	len = len_u(n);
+	len = len_dec(n);
+	if (n == MIN_INT)
+	{
+		ft_putchar('-');
+		ft_putchar('2');
+		n = 147483648;
+	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+	}
 	if (n > 9)
 	{
 		ft_putnbr(n / 10);
