@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:19:37 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/11/22 20:09:52 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/11/23 14:18:04 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	do_pointer(size_t pointer)
 {
-	size_t	almost_res;
-	char	*res;
 	int		len;
 
 	if (pointer == 0)

@@ -2,8 +2,8 @@
 
 #target : dependencies
 #	action
-
-MAND = ft_printf.c ft_printf_utils.c ft_printhex.c ft_printpointer.c ft_putnbr_dec.c
+CFLAGS = -Wall -Wextra -Werror
+MAND = ft_printf.c ft_putnbr_u.c ft_printhex.c ft_printpointer.c ft_putnbr_dec.c ft_puts.c
 
 OBJ_MAND = $(MAND:.c=.o)
 
