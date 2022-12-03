@@ -6,20 +6,11 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:43:59 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/11/30 21:03:15 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/03 14:58:51 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	*ft_putstr(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		write(STD_ERROR, &str[i++], 1);
-}
 
 int	check_arr(char **argv)
 {
@@ -32,6 +23,8 @@ int	check_arr(char **argv)
 	{
 		j = 0;
 		c_minus = 0;
+		if (!ft_strcmp(argv [i], ONLY_MINUS))
+			return (1);
 		while (argv[i][j])
 		{
 			if (argv[i][j] == '-' || ft_isdigit(argv[i][j]))
@@ -43,12 +36,13 @@ int	check_arr(char **argv)
 			else
 				return (1);
 			if (c_minus > 1)
-				return (1);	
+				return (1);
 		}
 		i++;
 	}
 	return (0);
 }
+
 int	len_dec(int n)
 {
 	int	len;
@@ -76,7 +70,7 @@ int	check_int_value(char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		if (ft_strlen(argv[i]) != len_dec(ft_atoi(argv[i])))	
+		if ((int)ft_strlen(argv[i]) != len_dec(ft_atoi(argv[i])))
 			return (1);
 		i++;
 	}
@@ -86,10 +80,10 @@ int	check_int_value(char **argv)
 int	check_duplicates(char **argv, int size)
 {
 	int	i;
-    int	j;
+	int	j;
 	int	*keep_intg;
 
-	keep_intg = malloc(size + 1 * sizeof(int));
+	keep_intg = malloc(size * sizeof(int));
 	i = 0;
 	while (argv[i + 1])
 	{
@@ -105,26 +99,30 @@ int	check_duplicates(char **argv, int size)
 			if (keep_intg[i] == keep_intg[i + j++])
 				return (1);
 		}
-		i++;		
+		i++;
 	}
 	free(keep_intg);
 	return (0);
 }
 
-p_stack *create_arr(char **argv, int size)
+t_stack	*create_arr(char **argv, int size)
 {
-	int	i;
-	p_stack	*stack_a;
+	int		i;
+	t_stack	*stack_a;
 
 	i = 0;
-	stack_a = malloc(sizeof(stack_a));
-	if (check_duplicates(argv, size) == 0 && check_int_value(argv) == 0 && check_arr(argv) == 0)
+	stack_a = malloc(sizeof *stack_a);
+	if (!check_duplicates(argv, size)
+		&& !check_int_value(argv) && !check_arr(argv))
 	{
-		stack_a->array = malloc(size * sizeof(int));
+		stack_a->array = malloc(size * sizeof * stack_a->array);
 		stack_a->size = size;
 		while (argv[i + 1])
-			stack_a->array[i++] = ft_atoi(argv[i + 1]);
-	}	
+		{
+			stack_a->array[i] = ft_atoi(argv[i + 1]);
+			i++;
+		}
+	}
 	else
 	{
 		ft_putstr("Error!\n");
