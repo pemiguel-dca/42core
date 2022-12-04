@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/03 17:59:27 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/04 19:10:38 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 
 typedef struct stacks
 {
+	int				pos_top;
 	int				*array;
 	unsigned int	size;
 }		t_stack;
@@ -42,7 +43,6 @@ typedef struct stacks
 int		ft_atoi(char *str);
 int		ft_isdigit(int arg);
 size_t	ft_strlen(char *str);
-void	*ft_calloc(size_t nitems, size_t size);
 
 t_stack	*create_arr(char **args, int size);
 
@@ -55,10 +55,20 @@ void	*ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
 
 //max&min
-int	max(t_stack *stack);
-int	min(t_stack *stack);
+int		max(t_stack *stack);
+int		min(t_stack *stack);
 
 //actions
-void	swap_one_stacks(char *name_ac, t_stack *stack);
-void	rotate_one_stack(char *name_ac, t_stack *stack);
+void	swap(int *first, int *second);
+void	swap_one_stack(char *name_ac, t_stack *stack, int how_much);
+void	rotate_one_stack(char *name_ac, t_stack *stack, int how_much);
+void	push_b(char *name_ac, t_stack *a, t_stack *b);
+void	push_a(char *name_ac, t_stack *a, t_stack *b);
+
+//actions_2
+void	rr_one_stack(char *name_ac, t_stack *stack, int how_much);
+void	ss(char *name_ac, t_stack *a, t_stack *b);
+void	rr(char *name_ac, t_stack *a, t_stack *b);
+void	rrr(char *name_ac, t_stack *a, t_stack *b);
+
 #endif

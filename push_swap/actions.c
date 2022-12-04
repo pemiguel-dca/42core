@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:03:12 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/03 18:19:45 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/04 19:07:06 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,49 +21,68 @@ void	swap(int *first, int *second)
 	*second = temp;
 }
 
-void	swap_one_stacks(char *name_ac, t_stack *stack)
+void	swap_one_stack(char *name_ac, t_stack *stack, int how_much)
 {
-	swap(&stack->array[0], &stack->array[1]);
-	ft_putstr(name_ac);
-	write(1, "\n", 1);
+	swap(&stack->array[stack->pos_top], &stack->array[stack->pos_top + 1]);
+	if (how_much == 1)
+		ft_putstr(name_ac);
 }
 
-void	rotate_one_stack(char *name_ac, t_stack *stack)
+void	rotate_one_stack(char *name_ac, t_stack *stack, int how_much)
 {
 	unsigned int	i;
-	int	first_number;
+	int				first_number;
 
-	first_number = stack->array[0];
-	i = 0;
+	first_number = stack->array[stack->pos_top];
+	i = stack->pos_top;
 	while (i < stack->size)
 	{
-			swap(&stack->array[i],&stack->array[(i + 1)]);
+		swap(&stack->array[i], &stack->array[(i + 1)]);
 		i++;
 	}
-	stack->array[stack->size - 1] = first_number;
-	ft_putstr(name_ac);
-	write(1, "\n", 1);
+	stack->array[i - 1] = first_number;
+	if (how_much == 1)
+		ft_putstr(name_ac);
 }
 
-//Take the first element at the top of b and put it at the top of a. Do nothing if b is empty.
-void	push(char *name_ac, t_stack *a, t_stack *b)
+void	push_b(char *name_ac, t_stack *a, t_stack *b)
 {
-	unsigned int	i;
-	if (!b->size)
-		b = malloc(a->size * sizeof(t_stack));
-	a->size--;
+	int	i;
+
+	i = 0;
 	b->size++;
-	if (b->size > 1)
-		b->array = ft_calloc(a->size, sizeof(int));
-	if (ft_strcmp(name_ac, PB))
+	if (a->pos_top != 0)
 	{
-		b->array[0] = a->array[0];
-		while (i < b->size)
+		while (i < a->pos_top)
 		{
-
-
+			swap(&b->array[i], &b->array[(a->pos_top)]);
 			i++;
 		}
 	}
-	else if (ft_strcmp(name_ac, PA))//pa
+	b->array[0] = a->array[a->pos_top];
+	a->pos_top++;
+	if (a->pos_top == (int)a->size)
+		a->pos_top = -1;
+	ft_putstr(name_ac);
+}
+
+void	push_a(char *name_ac, t_stack *a, t_stack *b)
+{
+	int	i;
+
+	i = 0;
+	if (b->pos_top != 0)
+	{
+		while (i < b->pos_top)
+		{
+			swap(&a->array[i], &a->array[(b->pos_top)]);
+			i++;
+		}
+	}
+	a->array[0] = b->array[b->pos_top];
+	b->pos_top++;
+	if (b->pos_top == (int)b->size)
+		b->pos_top = -1;
+	a->pos_top--;
+	ft_putstr(name_ac);
 }

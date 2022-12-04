@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:45:39 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/03 14:42:37 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/04 19:04:07 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	max(t_stack *stack)
 {
 	unsigned int	i;
-	int	max;
+	int				max;
 
 	max = 0;
 	i = 0;
@@ -27,10 +27,11 @@ int	max(t_stack *stack)
 	}
 	return (max);
 }
+
 int	min(t_stack *stack)
 {
 	unsigned int	i;
-	int	min;
+	int				min;
 
 	min = max(stack);
 	i = 0;

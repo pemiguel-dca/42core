@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:43:59 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/03 14:58:51 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/04 19:12:33 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,13 @@ t_stack	*create_arr(char **argv, int size)
 	t_stack	*stack_a;
 
 	i = 0;
-	stack_a = malloc(sizeof *stack_a);
+	stack_a = malloc(sizeof (*stack_a));
 	if (!check_duplicates(argv, size)
 		&& !check_int_value(argv) && !check_arr(argv))
 	{
-		stack_a->array = malloc(size * sizeof * stack_a->array);
+		stack_a->array = malloc(size * sizeof(int));
 		stack_a->size = size;
+		stack_a->pos_top = 0;
 		while (argv[i + 1])
 		{
 			stack_a->array[i] = ft_atoi(argv[i + 1]);
@@ -125,7 +126,7 @@ t_stack	*create_arr(char **argv, int size)
 	}
 	else
 	{
-		ft_putstr("Error!\n");
+		ft_putstr("Error!");
 		exit(0);
 	}
 	return (stack_a);

@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:49:19 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/03 17:59:16 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/04 19:10:26 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,4 @@ int	ft_isdigit(int arg)
 	if (arg >= '0' && arg <= '9')
 		return (1);
 	return (0);
-}
-
-void	*ft_calloc(size_t nitems, size_t size)
-{
-	size_t	total;
-	void	*ptr;
-
-	total = nitems * size;
-	ptr = (void *)malloc(total);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, nitems * size);
-	return (ptr);
 }
