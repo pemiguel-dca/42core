@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/04 19:10:38 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/05 19:21:03 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define STD_ERROR 2
 # define ONLY_MINUS "-"
+
 //Actions available
 # define SA "sa"
 # define SB "sb"
@@ -46,9 +47,13 @@ size_t	ft_strlen(char *str);
 
 t_stack	*create_arr(char **args, int size);
 
+//lets_sort
+void	lets_sort(int *array, t_stack *a, t_stack *b);
+
 //sort normal
 int		*copy_a(t_stack *a);
 void	proper_sort(int *tab, int size);
+void	proper_sort_b(int *tab, int size);
 
 //str
 void	*ft_putstr(char *str);
@@ -57,6 +62,8 @@ int		ft_strcmp(char *s1, char *s2);
 //max&min
 int		max(t_stack *stack);
 int		min(t_stack *stack);
+int		mid_sorted(int *array, int size);
+int		find_mid_pos(int mid, t_stack *stack);
 
 //actions
 void	swap(int *first, int *second);
