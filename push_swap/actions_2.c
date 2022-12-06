@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:09:08 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/04 19:08:04 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/06 16:06:16 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	rr_one_stack(char *name_ac, t_stack *stack, int how_much)
 	int	first_number;
 
 	first_number = stack->array[stack->size - 1];
-	i = stack->size;
+	i = stack->size - (stack->pos_top - 1);
 	while (i > stack->pos_top)
 	{
 		swap(&stack->array[i], &stack->array[(i - 1)]);

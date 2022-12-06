@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/05 19:21:03 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/06 16:05:12 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct stacks
 //helpers
 int		ft_atoi(char *str);
 int		ft_isdigit(int arg);
+int		ft_memcmp(void *str1, void *str2, size_t n);
 size_t	ft_strlen(char *str);
 
 t_stack	*create_arr(char **args, int size);

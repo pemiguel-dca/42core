@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:49:19 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/04 19:10:26 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/06 19:56:57 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,19 @@ int	ft_isdigit(int arg)
 {
 	if (arg >= '0' && arg <= '9')
 		return (1);
+	return (0);
+}
+
+int	ft_memcmp(void *str1, void *str2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)str1)[i] != ((unsigned char *)str2)[i])
+			return (((unsigned char *)str1)[i] - ((unsigned char *)str2)[i]);
+		i++;
+	}
 	return (0);
 }
