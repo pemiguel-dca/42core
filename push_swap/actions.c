@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:03:12 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/06 19:53:48 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/07 23:13:50 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	push_b(char *name_ac, t_stack *a, t_stack *b)
 {
 	int	i;
 
-	i = 0;
+	i = b->pos_top;
 	b->size++;
 	if (a->pos_top != 0)
 	{
@@ -59,31 +59,17 @@ void	push_b(char *name_ac, t_stack *a, t_stack *b)
 			i++;
 		}
 	}
-	b->array[0] = a->array[a->pos_top];
+	b->array[b->pos_top] = a->array[a->pos_top];
+	a->array[a->pos_top] = 0;
 	a->pos_top++;
-	if (a->pos_top == (int)a->size)
-		a->pos_top = 0;
 	ft_putstr(name_ac);
 }
 
 void	push_a(char *name_ac, t_stack *a, t_stack *b)
 {
-	int	i;
-
-	i = 0;
-	b->size--;
-	if (b->pos_top != 0)
-	{
-		while (i < b->pos_top)
-		{
-			swap(&a->array[i], &a->array[(b->pos_top)]);
-			i++;
-		}
-	}
-	a->array[0] = b->array[b->pos_top];
-	b->pos_top++;
-	if (b->pos_top == (int)b->size)
-		b->pos_top = 0;
 	a->pos_top--;
+	a->array[a->pos_top] = b->array[b->pos_top];
+	b->array[b->pos_top] = 0;
+	b->pos_top++;
 	ft_putstr(name_ac);
 }

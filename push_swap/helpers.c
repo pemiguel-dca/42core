@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:49:19 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/06 19:56:57 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/07 21:22:57 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int	ft_memcmp(void *str1, void *str2, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (((unsigned char *)str1)[i] != ((unsigned char *)str2)[i])
-			return (((unsigned char *)str1)[i] - ((unsigned char *)str2)[i]);
+		if (((unsigned int *)str1)[i] != ((unsigned int*)str2)[i])
+			return (((int *)str1)[i] - ((int *)str2)[i]);
 		i++;
 	}
 	return (0);

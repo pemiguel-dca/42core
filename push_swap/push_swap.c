@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:25:24 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/06 18:38:21 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/07 23:21:12 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,25 @@ t_stack	*init_b(t_stack *a)
 
 int	main(int args, char *argv[])//while (ft_strcmp((char *)copy, (char *)a->array))
 {
-	t_stack	*a;
-	t_stack	*b;
-	int		i;
-	int		*copy;
+	t_stack			*a;
+	t_stack			*b;
+	//unsigned int	i;
+	int				*copy;
 
-	i = 0;
+	//i = 0;
 	a = create_arr(argv, (args - 1));
 	b = init_b(a);
-	copy = copy_a(a);
+	copy = copy_stack(a);
 	proper_sort(copy, a->size);
 	lets_sort(copy, a, b);
-	printf("b size:%d", b->size);
-	printf("Stack B: \n");
-	while (i < a->pos_top)
-	{
-		printf("Número %d :%d\n", i + 1, b->array[i]);
-		i++;
-	}
+	/*
 	printf("Stack A: \n");
-	while (i < (args - 1))
+	i = a->pos_top;
+	while (i < a->size)
 	{
 		printf("Número %d :%d\n", i + 1, a->array[i]);
 		i++;
 	}
-
+	*/
 	free(a);
 }

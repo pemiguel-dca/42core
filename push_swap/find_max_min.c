@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:45:39 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/06 17:27:34 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:21:16 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	max(t_stack *stack)
 	unsigned int	i;
 	int				max;
 
-	max = 0;
-	i =  stack->pos_top;
+	i = stack->pos_top;
+	max = stack->array[i];
 	while (i < stack->size)
 	{
 		if (stack->array[i] > max)
@@ -50,12 +50,18 @@ int	mid_sorted(int *array, int size)
 	return (array[size / 2]);
 }
 
-int	find_mid_pos(int mid, t_stack *stack)//comecando do 0
+int	mid_sorted_for_b(int *array, int size)
+{
+	proper_sort_b(array, size);
+	return (array[size / 2]);
+}
+
+int	find_max_pos(int max, t_stack *stack)//comecando do 0
 {
 	int	i;
 
 	i = stack->pos_top;
-	while (stack->array[i] != mid) // pode vir a ser menos stack-top porque o top aumenta a medida que tiramos um numero, mas vemos depois
+	while (stack->array[i] != max) // pode vir a ser menos stack-top porque o top aumenta a medida que tiramos um numero, mas vemos depois
 		i++;
-	return (i);
+	return (i - stack->pos_top);
 }

@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/06 16:05:12 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:20:42 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_stack	*create_arr(char **args, int size);
 void	lets_sort(int *array, t_stack *a, t_stack *b);
 
 //sort normal
-int		*copy_a(t_stack *a);
+int		*copy_stack(t_stack *stack);
 void	proper_sort(int *tab, int size);
 void	proper_sort_b(int *tab, int size);
 
@@ -64,7 +64,8 @@ int		ft_strcmp(char *s1, char *s2);
 int		max(t_stack *stack);
 int		min(t_stack *stack);
 int		mid_sorted(int *array, int size);
-int		find_mid_pos(int mid, t_stack *stack);
+int		mid_sorted_for_b(int *array, int size);
+int		find_max_pos(int max, t_stack *stack);
 
 //actions
 void	swap(int *first, int *second);

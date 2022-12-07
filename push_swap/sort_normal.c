@@ -6,23 +6,23 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:11:19 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/05 16:30:28 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/06 23:37:44 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*copy_a(t_stack *a)
+int	*copy_stack(t_stack *stack)
 {
 	int				*c;
 	int				array_c[1024];
 	unsigned int	i;
 
 	i = 0;
-	c = malloc(a->size * sizeof(int));
-	while (i != a->size)
+	c = malloc(stack->size * sizeof(int));
+	while (i != stack->size)
 	{
-		array_c[i] = a->array[i];
+		array_c[i] = stack->array[i];
 		i++;
 	}
 	c = array_c;
