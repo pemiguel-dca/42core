@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:25:24 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/07 23:21:12 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:42:35 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,18 @@ int	main(int args, char *argv[])//while (ft_strcmp((char *)copy, (char *)a->arra
 {
 	t_stack			*a;
 	t_stack			*b;
-	//unsigned int	i;
 	int				*copy;
 
-	//i = 0;
+
 	a = create_arr(argv, (args - 1));
 	b = init_b(a);
 	copy = copy_stack(a);
 	proper_sort(copy, a->size);
-	lets_sort(copy, a, b);
-	/*
+	if (a->size > 0)
+		lets_sort(copy, a, b);
+	unsigned int	i;
+	i = 0;
+	printf("%d", a->pos_top);
 	printf("Stack A: \n");
 	i = a->pos_top;
 	while (i < a->size)
@@ -44,6 +46,6 @@ int	main(int args, char *argv[])//while (ft_strcmp((char *)copy, (char *)a->arra
 		printf("Número %d :%d\n", i + 1, a->array[i]);
 		i++;
 	}
-	*/
+
 	free(a);
 }

@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:38:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/07 23:09:35 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:54:23 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_putstr(char *str)
 
 	i = 0;
 	while (str[i])
-		write(STD_ERROR, &str[i++], 1);
+		write(STDOUT_FILENO, &str[i++], 1);
 	write(1, "\n", 1);
 	return (0);
 }

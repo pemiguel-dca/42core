@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/07 20:20:42 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/08 12:01:30 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,6 @@ void	ss(char *name_ac, t_stack *a, t_stack *b);
 void	rr(char *name_ac, t_stack *a, t_stack *b);
 void	rrr(char *name_ac, t_stack *a, t_stack *b);
 
+//exception
+void	when_size_3(t_stack *a);
 #endif
