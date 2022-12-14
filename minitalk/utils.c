@@ -6,11 +6,26 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:44:18 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/11 17:20:48 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:45:32 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+size_t	ft_strlen(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*convert_char_to_binary(char c)
+{
+
+}
 
 void	ft_putchar_fd(char c, int fd)
 {
