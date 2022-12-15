@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:03:12 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/07 23:13:50 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/09 22:56:44 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	rotate_one_stack(char *name_ac, t_stack *stack, int how_much)
 
 void	push_b(char *name_ac, t_stack *a, t_stack *b)
 {
-	int	i;
+	unsigned int	i;
 
 	i = b->pos_top;
 	b->size++;
 	if (a->pos_top != 0)
 	{
-		while (i < a->pos_top)
+		while (i < b->size)
 		{
 			swap(&b->array[i], &b->array[(a->pos_top)]);
 			i++;
@@ -67,8 +67,13 @@ void	push_b(char *name_ac, t_stack *a, t_stack *b)
 
 void	push_a(char *name_ac, t_stack *a, t_stack *b)
 {
-	a->pos_top--;
+	int	previous_top;
+
+	previous_top = a->array[a->pos_top + 1];
+	printf("Previous Top:%d", previous_top);
 	a->array[a->pos_top] = b->array[b->pos_top];
+	if (previous_top < a->array[a->pos_top])
+		swap_one_stack(SA, a, 1);
 	b->array[b->pos_top] = 0;
 	b->pos_top++;
 	ft_putstr(name_ac);
