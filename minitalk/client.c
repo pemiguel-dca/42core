@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:37:09 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/14 17:05:40 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/15 16:38:56 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,6 @@ we have to use a function to check if the PID passed is valid
 */
 
 #include "minitalk.h"
-
-void	send_length_str(int length, int pid)
-{
-	int	i;
-
-	i = 0;
-	while (i <= 32)
-	{
-		if (length & 1)
-			kill(pid, SIGUSR2);
-		else
-			kill(pid, SIGUSR1);
-		length = length >> 1;
-		i++;
-		usleep(SLEEP);
-	}
-}
 
 void	send_binary_char(char c, int pid)
 {
@@ -60,7 +43,7 @@ int	confirm_params(int n_params, char **argv)
 	int i;
 
 	i = 0;
-	if (n_params != 3)
+	if (n_params != 2)
 		return (1);
 	while (argv[1][i])
 	{
@@ -73,17 +56,16 @@ int	confirm_params(int n_params, char **argv)
 int main(int argc, char *argv[])
 {
 	int 	pid;
-	size_t	len;
-	char	*str; // string to send
+	char	*str;
 
+	pid = ft_atoi(argv[1]);
 	str = argv[2];
-	len = ft_strlen(str);
 	if (!confirm_params(argc - 1, argv))
 	{
-		send_length_str(len, pid);
+		printf("Right");
 		while (*str)
 			send_binary_char(*str++, pid);
-		send_binary_char(*str++, pid); //para o nulo (I GUESS)
+		send_binary_char('\0', pid);
 	}
 	return (0);
 }

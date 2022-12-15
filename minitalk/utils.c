@@ -6,23 +6,13 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:44:18 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/14 19:10:57 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/15 16:25:07 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int		recursive_power(int nb, int power)
+int		ft_recursive_power(int nb, int power)
 {
 	int	nb_power;
 
@@ -81,4 +71,39 @@ char	*ft_strchr(const char *str, int c)
 		i++;
 	}
 	return ((char *)(str + i));
+}
+
+static int	ft_check_white_spaces(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] == 32 || (s[i] >= 9 && s[i] <= 13))
+	{
+		i++;
+	}
+	return (i);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	signal;
+	int	atoi;
+
+	i = ft_check_white_spaces((char *)str);
+	atoi = 0;
+	signal = 1;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			signal = signal * -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		atoi = atoi * 10 + str[i] - 48;
+		i++;
+	}
+	return (atoi * signal);
 }
