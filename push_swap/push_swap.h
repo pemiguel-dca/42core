@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/09 00:59:07 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/22 17:56:12 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int		max(t_stack *stack);
 int		min(t_stack *stack);
 int		mid_sorted(int *array, int size);
 int		mid_sorted_for_b(int *array, int size);
-int		find_pos(int pos, t_stack *stack);
+int		find_pos_beg(int nb, t_stack *stack);
+int		find_pos_end(int nb, t_stack *stack);
 
 //actions
 void	swap(int *first, int *second);
