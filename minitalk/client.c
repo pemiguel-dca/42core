@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:37:09 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/15 16:38:56 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/22 15:33:22 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	send_binary_char(char c, int pid)
 	int	i; // vai correr ate chegar a 8 bits, porque 1 byte = 8 bits, 1 byte pois sizeof(char) = 1 byte
 
 	i = 0;
-	while (i <= 8)
+	while (i < 8)
 	{
-		if (c & 1) //compara(bitwise) se c == 1
+		if (c & 0x01) //compara(bitwise) se c == 1
 			kill(pid, SIGUSR2); //sending 1
 		else
 			kill(pid, SIGUSR1); //sending 0
@@ -53,19 +53,32 @@ int	confirm_params(int n_params, char **argv)
 	return (0);
 }
 
+void	message_recieved(int sig)
+{
+	static int	sent;
+
+	if (sig == SIGUSR1)
+	{
+		printf("Signal sent successfully!\n");
+		exit(0);
+	}
+	if (sig == SIGUSR2)
+		++sent;
+}
 int main(int argc, char *argv[])
 {
 	int 	pid;
 	char	*str;
 
+	printf("%d", getpid());
 	pid = ft_atoi(argv[1]);
 	str = argv[2];
 	if (!confirm_params(argc - 1, argv))
 	{
-		printf("Right");
+		signal(SIGUSR1, &message_recieved);
+		signal(SIGUSR2, &message_recieved);
 		while (*str)
 			send_binary_char(*str++, pid);
 		send_binary_char('\0', pid);
 	}
-	return (0);
 }

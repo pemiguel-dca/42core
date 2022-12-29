@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:03:12 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/09 22:56:44 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/22 16:42:38 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,8 @@ void	push_b(char *name_ac, t_stack *a, t_stack *b)
 
 void	push_a(char *name_ac, t_stack *a, t_stack *b)
 {
-	int	previous_top;
-
-	previous_top = a->array[a->pos_top + 1];
-	printf("Previous Top:%d", previous_top);
+	a->pos_top--;
 	a->array[a->pos_top] = b->array[b->pos_top];
-	if (previous_top < a->array[a->pos_top])
-		swap_one_stack(SA, a, 1);
 	b->array[b->pos_top] = 0;
 	b->pos_top++;
 	ft_putstr(name_ac);

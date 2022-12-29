@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 19:02:28 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/09 22:58:23 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/24 18:28:36 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	first_step(int *array, t_stack *a, t_stack *b)
 			push_b(PB, a, b);
 		if (a->array[a->pos_top + 1] <= mid)	
 		{
-			//while (compare_while_running(array, a, run))
-			//	run++;
+			while (compare_while_running(array, a, run))
+				run++;
 			if (run < a->pos_top)
 				swap_one_stack(SA, a, 1);
 		}
@@ -83,39 +83,25 @@ void	first_step(int *array, t_stack *a, t_stack *b)
 void	second_step(int *array, t_stack *a, t_stack *b)
 {
 	int					m;
-	int					*sorted_b;
-	unsigned int		i;
 	unsigned int		b_numb;
 
 	b_numb = b->size;
-	sorted_b = copy_stack(b);
-	m = 0;
-	i = 0;
-	array++;
-	while (b_numb != 93)
+	m = max(b);
+	while (final_comparison(array, a))
 	{
-		i = 0;
-		m = mid_sorted_for_b(sorted_b + b->pos_top, b_numb);
-		if (b_numb == 2 && (b->array[b->pos_top] < b->array[b->pos_top + 1]))
+		if (b->array[b->pos_top + 1] == m)
 			swap_one_stack(SB, b, 1);
-		if (b_numb == 1 || b_numb == 2)
+		while (b->array[b->pos_top] == m && final_comparison(array, a))
 		{
 			push_a(PA, a, b);
+			m = max(b);
 			b_numb--;
 		}
-		while (b->array[b->pos_top] > m && b_numb > 93)
+		if (b_numb > 2 && b->array[b->pos_top] != m)
 		{
-			a->pos_top--;
-			push_a(PA, a, b);
-			b_numb--;
-		}
-		if (b_numb > 2)
-		{
-			while ((b->pos_top + i) < b->size)
-				i++;
-			if (b->array[b->pos_top + i] > m)
+			if (find_pos_beg(m, b) > find_pos_end(m, b))
 				rr_one_stack(RRB, b, 1);
-			else if (b->array[b->pos_top] <= m)
+			else
 				rotate_one_stack(RB, b, 1);
 		}
 	}
@@ -125,6 +111,12 @@ void	lets_sort(int *array, t_stack *a, t_stack *b)
 {
 	if (a->size == 3)
 		when_size_3(a);
-	first_step(array, a, b);
-	second_step(array, a, b);
+	if (a->size < 200)
+	{
+		first_step(array, a, b);
+		second_step(array, a, b);
+	}
+	else
+		while (final_comparison(array, a))
+			
 }

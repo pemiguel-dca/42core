@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:45:39 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/09 00:58:53 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/22 18:00:14 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,32 @@ int	mid_sorted_for_b(int *array, int size)
 	return (array[size / 2]);
 }
 
-int	find_pos(int pos, t_stack *stack)//comecando do 0
+int	find_pos_beg(int nb, t_stack *stack)//comecando do 0
 {
 	int	i;
-
+	int	returns;
+	
 	i = stack->pos_top;
-	while (stack->array[i] != pos) // pode vir a ser menos stack-top porque o top aumenta a medida que tiramos um numero, mas vemos depois
+	returns = 0;
+	while (stack->array[i] != nb) // pode vir a ser menos stack-top porque o top aumenta a medida que tiramos um numero, mas vemos depois
+	{
 		i++;
-	return (i - stack->pos_top);
+		returns++;
+	}
+	return (returns);
+}
+
+int	find_pos_end(int nb, t_stack *stack)//comecando do 0
+{
+	int	i;
+	int	returns;
+	
+	i = stack->size;
+	returns = 0;
+	while (stack->array[i] != nb) // pode vir a ser menos stack-top porque o top aumenta a medida que tiramos um numero, mas vemos depois
+	{
+		i--;
+		returns++;
+	}
+	return (returns);
 }

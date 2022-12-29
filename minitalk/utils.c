@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:44:18 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/15 16:25:07 by pemiguel         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:16:50 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,12 @@
 
 int		ft_recursive_power(int nb, int power)
 {
-	int	nb_power;
-
-	nb_power = nb;
-	if (nb_power > nb_power + nb)
+	if (power < 0)
 		return (0);
-	else if (power > 1)
-		return (nb_power * ft_recursive_power(nb_power, power - 1));
-	else if (power == 0)
+	else if (power == 0 && power == 0)
 		return (1);
-	else if (power < 0)
-		return (0);
 	else
-		return (nb_power);
+		return (nb * ft_recursive_power(nb, power - 1));
 }
 
 void	ft_putchar_fd(char c, int fd)
@@ -107,3 +100,17 @@ int	ft_atoi(const char *str)
 	}
 	return (atoi * signal);
 }
+/*
+void	*ft_calloc(size_t nitems, size_t size)
+{
+	size_t	total;
+	void	*ptr;
+
+	total = nitems * size;
+	ptr = (void *)malloc(total);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, nitems * size);
+	return (ptr);
+}
+*/
