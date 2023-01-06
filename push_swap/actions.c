@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:03:12 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/22 16:42:38 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/05 22:11:38 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,30 @@ void	push_b(char *name_ac, t_stack *a, t_stack *b)
 {
 	unsigned int	i;
 
+	if (!a->size)
+		return ;
 	i = b->pos_top;
 	b->size++;
 	if (a->pos_top != 0)
 	{
 		while (i < b->size)
 		{
-			swap(&b->array[i], &b->array[(a->pos_top)]);
+			swap(&b->array[i], &b->array[(b->size)]);
 			i++;
 		}
 	}
 	b->array[b->pos_top] = a->array[a->pos_top];
-	a->array[a->pos_top] = 0;
 	a->pos_top++;
 	ft_putstr(name_ac);
 }
 
 void	push_a(char *name_ac, t_stack *a, t_stack *b)
 {
+	if (!b->size)
+		return ;
 	a->pos_top--;
 	a->array[a->pos_top] = b->array[b->pos_top];
-	b->array[b->pos_top] = 0;
 	b->pos_top++;
+	b->size--;
 	ft_putstr(name_ac);
 }

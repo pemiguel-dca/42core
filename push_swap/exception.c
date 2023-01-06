@@ -6,11 +6,21 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:31:07 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/08 12:40:31 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/05 22:12:38 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+size_t	ft_strlen(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 void	when_size_3(t_stack *a)
 {

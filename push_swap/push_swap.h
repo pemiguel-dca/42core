@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/22 17:56:12 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:55:13 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ typedef struct stacks
 }		t_stack;
 
 //helpers
+size_t	ft_strlen(char *str);
 int		ft_atoi(char *str);
 int		ft_isdigit(int arg);
+int		ft_get_index(int *str1, int *str2);
 int		ft_memcmp(void *str1, void *str2, size_t n);
-size_t	ft_strlen(char *str);
 
 t_stack	*create_arr(char **args, int size);
 
@@ -83,4 +84,10 @@ void	rrr(char *name_ac, t_stack *a, t_stack *b);
 
 //exception
 void	when_size_3(t_stack *a);
+
+//new idea
+t_stack	*duplicate_list(t_stack *a);
+t_stack	*init(t_stack *a);
+void	sort_with_radix(t_stack *dup, t_stack *b);
+int		compare_stack(int *array, t_stack *stack);
 #endif

@@ -1,0 +1,6 @@
+This text file is to explain how the complex numbers are created and what they are.
+
+What is a complex number?
+---<A complex number is just two numbers added together (a REAL number and an Imaginary)>---
+
+
