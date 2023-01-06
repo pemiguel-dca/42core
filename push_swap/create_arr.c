@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:43:59 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/04 19:12:33 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/05 22:30:34 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	check_duplicates(char **argv, int size)
 		i++;
 	}
 	i = 0;
-	while (keep_intg[i])
+	while (i < size)
 	{
 		j = 1;
 		while (j < size)
@@ -112,6 +112,8 @@ t_stack	*create_arr(char **argv, int size)
 
 	i = 0;
 	stack_a = malloc(sizeof (*stack_a));
+	if (!stack_a)
+		return (NULL);
 	if (!check_duplicates(argv, size)
 		&& !check_int_value(argv) && !check_arr(argv))
 	{

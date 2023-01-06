@@ -6,21 +6,11 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:49:19 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/07 21:22:57 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/05 22:12:21 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 static int	ft_check_white_spaces(char *s)
 {
@@ -64,6 +54,16 @@ int	ft_isdigit(int arg)
 	return (0);
 }
 
+int	ft_get_index(int *str1, int *str2)
+{
+	size_t	i;
+
+	i = 0;
+	while ((*str1) != (str2)[i])
+		i++;
+	return (i);
+}
+
 int	ft_memcmp(void *str1, void *str2, size_t n)
 {
 	size_t	i;
@@ -71,7 +71,7 @@ int	ft_memcmp(void *str1, void *str2, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (((unsigned int *)str1)[i] != ((unsigned int*)str2)[i])
+		if (((unsigned int *)str1)[i] != ((unsigned int *)str2)[i])
 			return (((int *)str1)[i] - ((int *)str2)[i]);
 		i++;
 	}
