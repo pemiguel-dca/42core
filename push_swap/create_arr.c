@@ -6,12 +6,18 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:43:59 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/05 22:30:34 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:03:24 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	check_only_minus(char *argv)
+{
+	if (!ft_strcmp(argv, ONLY_MINUS))
+		return (1);
+	return (0);
+}
 int	check_arr(char **argv)
 {
 	int	i;
@@ -23,8 +29,6 @@ int	check_arr(char **argv)
 	{
 		j = 0;
 		c_minus = 0;
-		if (!ft_strcmp(argv [i], ONLY_MINUS))
-			return (1);
 		while (argv[i][j])
 		{
 			if (argv[i][j] == '-' || ft_isdigit(argv[i][j]))
@@ -85,51 +89,24 @@ int	check_duplicates(char **argv, int size)
 
 	keep_intg = malloc(size * sizeof(int));
 	i = 0;
+	j = 0;
 	while (argv[i + 1])
 	{
 		keep_intg[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
-	i = 0;
-	while (i < size)
+	i = -1;
+	while (++i < size)
 	{
-		j = 1;
-		while (j < size)
+		j = i;
+		while (++j < size)
 		{
-			if (keep_intg[i] == keep_intg[i + j++])
+			if (keep_intg[i] == keep_intg[j])
 				return (1);
 		}
-		i++;
 	}
 	free(keep_intg);
 	return (0);
 }
 
-t_stack	*create_arr(char **argv, int size)
-{
-	int		i;
-	t_stack	*stack_a;
 
-	i = 0;
-	stack_a = malloc(sizeof (*stack_a));
-	if (!stack_a)
-		return (NULL);
-	if (!check_duplicates(argv, size)
-		&& !check_int_value(argv) && !check_arr(argv))
-	{
-		stack_a->array = malloc(size * sizeof(int));
-		stack_a->size = size;
-		stack_a->pos_top = 0;
-		while (argv[i + 1])
-		{
-			stack_a->array[i] = ft_atoi(argv[i + 1]);
-			i++;
-		}
-	}
-	else
-	{
-		ft_putstr("Error!");
-		exit(0);
-	}
-	return (stack_a);
-}

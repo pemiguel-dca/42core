@@ -6,17 +6,27 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:28:59 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/05 22:10:39 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:38:57 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*For 250 numbers or plus we'll go for the radix sort
-The radix sort only works with positive numbers so the idea is 
+The radix sort only works with positive numbers so the idea is
 to create a duplicate list that tranform every number to positive.
 EXAMPLE : A-> 2 24 -2 the duplicate will be Dup -> 1 2 0
 */
+
+int	get_max_bits(int max_number)
+{
+	int	max_bits;
+
+	max_bits = 0;
+	while ((max_number >> max_bits) != 0)
+		max_bits++;
+	return (max_bits);
+}
 
 t_stack	*duplicate_list(t_stack *a)
 {
@@ -47,10 +57,8 @@ void	sort_with_radix(t_stack *dup, t_stack *b)
 
 	i = -1;
 	j = -1;
-	max_bits = 0;
 	max_number = dup->size - 1;
-	while ((max_number >> max_bits) != 0)
-		max_bits++;
+	max_bits = get_max_bits(max_number);
 	while (++i < max_bits)
 	{
 		j = -1;
@@ -67,3 +75,4 @@ void	sort_with_radix(t_stack *dup, t_stack *b)
 			b->pos_top = 0;
 	}
 }
+

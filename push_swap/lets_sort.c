@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 19:02:28 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/05 22:06:44 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:15:07 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	first_step(int *array, t_stack *a, t_stack *b)
 		mid = mid_sorted(array + a->pos_top, (a->size - b->size));
 		while (a->array[a->pos_top] < mid && (a->size - b->size > 2))
 			push_b(PB, a, b);
-		if (a->array[a->pos_top + 1] <= mid)
-			swap_one_stack(SA, a, 1);
 		while ((a->pos_top + i) < a->size)
 			i++;
 		if (compare_stack(array, a))
@@ -59,18 +57,18 @@ void	first_step(int *array, t_stack *a, t_stack *b)
 	}
 }
 
-void	second_step(int *array, t_stack *a, t_stack *b)
+void	second_step(t_stack *a, t_stack *b)
 {
 	int					m;
 	unsigned int		b_numb;
 
 	b_numb = b->size;
 	m = max(b);
-	while (final_comparison(array, a))
+	while (b->size != 0)
 	{
-		if (b->array[b->pos_top + 1] == m)
-			swap_one_stack(SB, b, 1);
-		while (b->array[b->pos_top] == m && final_comparison(array, a))
+		if (b->size == 1)
+			push_a(PA, a, b);
+		while (b->array[b->pos_top] == m && b->size != 0)
 		{
 			push_a(PA, a, b);
 			m = max(b);
@@ -90,9 +88,9 @@ void	lets_sort(int *array, t_stack *a, t_stack *b)
 {
 	if (a->size == 3)
 		when_size_3(a);
-	if (a->size < 250)
+	if (a->size != 3 && a->size < 6)
 	{
 		first_step(array, a, b);
-		second_step(array, a, b);
-	}	
+		second_step(a, b);
+	}
 }

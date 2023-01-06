@@ -6,11 +6,40 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:25:24 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/05 22:31:28 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:03:30 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_stack	*create_arr(char **argv, int size)
+{
+	int		i;
+	t_stack	*stack_a;
+
+	i = 0;
+	stack_a = malloc(sizeof (*stack_a));
+	if (!stack_a)
+		return (NULL);
+	if (!check_duplicates(argv, size)
+		&& !check_int_value(argv) && !check_arr(argv))
+	{
+		stack_a->array = malloc(size * sizeof(int));
+		stack_a->size = size;
+		stack_a->pos_top = 0;
+		while (argv[i + 1])
+		{
+			stack_a->array[i] = ft_atoi(argv[i + 1]);
+			i++;
+		}
+	}
+	else
+	{
+		ft_putstr("Error!");
+		exit(0);
+	}
+	return (stack_a);
+}
 
 t_stack	*init(t_stack *a)
 {
@@ -28,13 +57,17 @@ int	main(int args, char *argv[])
 	t_stack			*a;
 	t_stack			*b;
 	t_stack			*duplicate_positive;
+	int				*copy;
 
 	a = create_arr(argv, (args - 1));
 	b = init(a);
+	copy = copy_stack(a);
+	proper_sort(copy, a->size);
 	duplicate_positive = duplicate_list(a);
-	sort_with_radix(duplicate_positive, b);
+	if (a->size > 5)
+		sort_with_radix(duplicate_positive, b);
+	else
+		lets_sort(copy, a, b);
 	free(a);
 	free(duplicate_positive);
-
-	//strlen está na exception.c porque nao havia mais espaço nos helpers
 }
