@@ -6,17 +6,23 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:25:24 by pemiguel          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/01/09 13:02:10 by pemiguel         ###   ########.fr       */
-=======
-/*   Updated: 2023/01/05 22:31:28 by pemiguel         ###   ########.fr       */
->>>>>>> 65a48047b4085210e45117414187cde10a0705aa
+/*   Updated: 2023/01/09 17:09:13 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-<<<<<<< HEAD
+void	free_all(int *copy, t_stack *a, t_stack *b, t_stack *duplicate_positive)
+{
+	free(copy);
+	free(a->array);
+	free(a);
+	free(b->array);
+	free(b);
+	free(duplicate_positive->array);
+	free(duplicate_positive);
+}
+
 t_stack	*create_arr(char **argv, int size)
 {
 	int		i;
@@ -26,7 +32,7 @@ t_stack	*create_arr(char **argv, int size)
 	stack_a = malloc(sizeof (*stack_a));
 	if (!stack_a)
 		return (NULL);
-	if (!check_duplicates(argv, size)
+	if (!check_duplicates(argv, size) && !check_only_minus(argv)
 		&& !check_int_value(argv) && !check_arr(argv))
 	{
 		stack_a->array = malloc(size * sizeof(int));
@@ -46,8 +52,6 @@ t_stack	*create_arr(char **argv, int size)
 	return (stack_a);
 }
 
-=======
->>>>>>> 65a48047b4085210e45117414187cde10a0705aa
 t_stack	*init(t_stack *a)
 {
 	t_stack	*b;
@@ -55,7 +59,7 @@ t_stack	*init(t_stack *a)
 	b = malloc(sizeof (*b));
 	b->size = 0;
 	b->pos_top = 0;
-	b->array = malloc(a->size * sizeof(int));
+	b->array = calloc(a->size, sizeof(int));
 	return (b);
 }
 
@@ -64,9 +68,13 @@ int	main(int args, char *argv[])
 	t_stack			*a;
 	t_stack			*b;
 	t_stack			*duplicate_positive;
-<<<<<<< HEAD
 	int				*copy;
 
+	if (args == 1)
+	{
+		ft_putstr("Please add some arguments.");
+		exit(0);
+	}
 	a = create_arr(argv, (args - 1));
 	b = init(a);
 	copy = copy_stack(a);
@@ -76,22 +84,5 @@ int	main(int args, char *argv[])
 		sort_with_radix(duplicate_positive, b);
 	else
 		lets_sort(copy, a, b);
-	free(copy);
-	free(a->array);
-	free(a);
-	free(b->array);
-	free(b);
-	free(duplicate_positive->array);
-	free(duplicate_positive);
-=======
-
-	a = create_arr(argv, (args - 1));
-	b = init(a);
-	duplicate_positive = duplicate_list(a);
-	sort_with_radix(duplicate_positive, b);
-	free(a);
-	free(duplicate_positive);
-
-	//strlen está na exception.c porque nao havia mais espaço nos helpers
->>>>>>> 65a48047b4085210e45117414187cde10a0705aa
+	free_all(copy, a, b, duplicate_positive);
 }

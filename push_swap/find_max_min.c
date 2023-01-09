@@ -6,11 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:45:39 by pemiguel          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/01/09 13:03:55 by pemiguel         ###   ########.fr       */
-=======
-/*   Updated: 2023/01/05 22:01:56 by pemiguel         ###   ########.fr       */
->>>>>>> 65a48047b4085210e45117414187cde10a0705aa
+/*   Updated: 2023/01/09 13:36:59 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +70,7 @@ int	find_pos_end(int nb, t_stack *stack)
 	int	i;
 	int	returns;
 
-	i = stack->size;
+	i = stack->size - 1;
 	returns = 0;
 	while (stack->array[i] != nb)
 	{
