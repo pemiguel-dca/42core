@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:11:19 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/06 23:37:44 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:01:36 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 int	*copy_stack(t_stack *stack)
 {
 	int				*c;
-	int				array_c[1024];
 	unsigned int	i;
 
 	i = 0;
 	c = malloc(stack->size * sizeof(int));
 	while (i != stack->size)
 	{
-		array_c[i] = stack->array[i];
+		c[i] = stack->array[i];
 		i++;
 	}
-	c = array_c;
 	return (c);
 }
 

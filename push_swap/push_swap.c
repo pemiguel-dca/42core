@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:25:24 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/06 17:03:30 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:02:10 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ int	main(int args, char *argv[])
 		sort_with_radix(duplicate_positive, b);
 	else
 		lets_sort(copy, a, b);
+	free(copy);
+	free(a->array);
 	free(a);
+	free(b->array);
+	free(b);
+	free(duplicate_positive->array);
 	free(duplicate_positive);
 }

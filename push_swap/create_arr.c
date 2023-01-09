@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:43:59 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/06 17:03:24 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:06:59 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	check_only_minus(char *argv)
 		return (1);
 	return (0);
 }
+
 int	check_arr(char **argv)
 {
 	int	i;
@@ -108,5 +109,3 @@ int	check_duplicates(char **argv, int size)
 	free(keep_intg);
 	return (0);
 }
-
-

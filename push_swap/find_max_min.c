@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:45:39 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/06 15:13:25 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:03:55 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	max(t_stack *stack)
 
 	i = stack->pos_top;
 	max = stack->array[i];
-	while (i < 5)
+	while (i < stack->size)
 	{
 		if (stack->array[i] > max)
 			max = stack->array[i];

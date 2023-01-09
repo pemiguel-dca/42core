@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:28:59 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/06 17:38:57 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:06:46 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_stack	*duplicate_list(t_stack *a)
 	}
 	duplicate_positive->size = a->size;
 	duplicate_positive->pos_top = 0;
+	free(organized);
 	return (duplicate_positive);
 }
 
@@ -75,4 +76,3 @@ void	sort_with_radix(t_stack *dup, t_stack *b)
 			b->pos_top = 0;
 	}
 }
-
