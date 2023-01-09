@@ -6,11 +6,42 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:31:07 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/05 22:12:38 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:10:24 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	*ft_memset(void *src, int c, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)src)[i] = c;
+		i++;
+	}
+	return (src);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, '\0', n);
+}
+
+void	*ft_calloc(size_t nitems, size_t size)
+{
+	size_t	total;
+	void	*ptr;
+
+	total = nitems * size;
+	ptr = (void *)malloc(total);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, nitems * size);
+	return (ptr);
+}
 
 size_t	ft_strlen(char *str)
 {

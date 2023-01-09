@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/05 16:55:13 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:08:40 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,16 @@ void	rrr(char *name_ac, t_stack *a, t_stack *b);
 
 //exception
 void	when_size_3(t_stack *a);
+void	*ft_calloc(size_t nitems, size_t size);
 
 //new idea
 t_stack	*duplicate_list(t_stack *a);
 t_stack	*init(t_stack *a);
 void	sort_with_radix(t_stack *dup, t_stack *b);
 int		compare_stack(int *array, t_stack *stack);
+
+int		check_duplicates(char **argv, int size);
+int		check_int_value(char **argv);
+int		check_arr(char **argv);
+int		check_only_minus(char **argv);
 #endif

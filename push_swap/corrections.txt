@@ -1,3 +1,0 @@
-create_arr.c -> More than 25 lines, por alguma razao agora funciona com numeros duplicados (?????)
-sort_complex.c -> More than 25 lines (por o max bits noutra funçao)
-push_swap.c -> Colocar o main em condições 			

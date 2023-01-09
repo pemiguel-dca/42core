@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:03:12 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/05 22:11:38 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:59:34 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	rotate_one_stack(char *name_ac, t_stack *stack, int how_much)
 
 	first_number = stack->array[stack->pos_top];
 	i = stack->pos_top;
-	while (i < stack->size)
+	while (i < stack->size - 1)
 	{
 		swap(&stack->array[i], &stack->array[(i + 1)]);
 		i++;
 	}
-	stack->array[i - 1] = first_number;
+	stack->array[i] = first_number;
 	if (how_much == 1)
 		ft_putstr(name_ac);
 }
