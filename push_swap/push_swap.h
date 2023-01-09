@@ -6,7 +6,11 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/01/09 13:06:39 by pemiguel         ###   ########.fr       */
+=======
+/*   Updated: 2023/01/05 16:55:13 by pemiguel         ###   ########.fr       */
+>>>>>>> 65a48047b4085210e45117414187cde10a0705aa
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +94,11 @@ t_stack	*duplicate_list(t_stack *a);
 t_stack	*init(t_stack *a);
 void	sort_with_radix(t_stack *dup, t_stack *b);
 int		compare_stack(int *array, t_stack *stack);
+<<<<<<< HEAD
 
 int		check_duplicates(char **argv, int size);
 int		check_int_value(char **argv);
 int		check_arr(char **argv);
+=======
+>>>>>>> 65a48047b4085210e45117414187cde10a0705aa
 #endif

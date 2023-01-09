@@ -6,7 +6,11 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:43:59 by pemiguel          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/01/09 13:06:59 by pemiguel         ###   ########.fr       */
+=======
+/*   Updated: 2023/01/05 22:30:34 by pemiguel         ###   ########.fr       */
+>>>>>>> 65a48047b4085210e45117414187cde10a0705aa
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +100,13 @@ int	check_duplicates(char **argv, int size)
 		keep_intg[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
+<<<<<<< HEAD
 	i = -1;
 	while (++i < size)
+=======
+	i = 0;
+	while (i < size)
+>>>>>>> 65a48047b4085210e45117414187cde10a0705aa
 	{
 		j = i;
 		while (++j < size)
@@ -109,3 +118,35 @@ int	check_duplicates(char **argv, int size)
 	free(keep_intg);
 	return (0);
 }
+<<<<<<< HEAD
+=======
+
+t_stack	*create_arr(char **argv, int size)
+{
+	int		i;
+	t_stack	*stack_a;
+
+	i = 0;
+	stack_a = malloc(sizeof (*stack_a));
+	if (!stack_a)
+		return (NULL);
+	if (!check_duplicates(argv, size)
+		&& !check_int_value(argv) && !check_arr(argv))
+	{
+		stack_a->array = malloc(size * sizeof(int));
+		stack_a->size = size;
+		stack_a->pos_top = 0;
+		while (argv[i + 1])
+		{
+			stack_a->array[i] = ft_atoi(argv[i + 1]);
+			i++;
+		}
+	}
+	else
+	{
+		ft_putstr("Error!");
+		exit(0);
+	}
+	return (stack_a);
+}
+>>>>>>> 65a48047b4085210e45117414187cde10a0705aa

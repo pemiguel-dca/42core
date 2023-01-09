@@ -6,12 +6,17 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:25:24 by pemiguel          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/01/09 13:02:10 by pemiguel         ###   ########.fr       */
+=======
+/*   Updated: 2023/01/05 22:31:28 by pemiguel         ###   ########.fr       */
+>>>>>>> 65a48047b4085210e45117414187cde10a0705aa
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+<<<<<<< HEAD
 t_stack	*create_arr(char **argv, int size)
 {
 	int		i;
@@ -41,6 +46,8 @@ t_stack	*create_arr(char **argv, int size)
 	return (stack_a);
 }
 
+=======
+>>>>>>> 65a48047b4085210e45117414187cde10a0705aa
 t_stack	*init(t_stack *a)
 {
 	t_stack	*b;
@@ -57,6 +64,7 @@ int	main(int args, char *argv[])
 	t_stack			*a;
 	t_stack			*b;
 	t_stack			*duplicate_positive;
+<<<<<<< HEAD
 	int				*copy;
 
 	a = create_arr(argv, (args - 1));
@@ -75,4 +83,15 @@ int	main(int args, char *argv[])
 	free(b);
 	free(duplicate_positive->array);
 	free(duplicate_positive);
+=======
+
+	a = create_arr(argv, (args - 1));
+	b = init(a);
+	duplicate_positive = duplicate_list(a);
+	sort_with_radix(duplicate_positive, b);
+	free(a);
+	free(duplicate_positive);
+
+	//strlen está na exception.c porque nao havia mais espaço nos helpers
+>>>>>>> 65a48047b4085210e45117414187cde10a0705aa
 }

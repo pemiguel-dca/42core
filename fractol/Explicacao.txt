@@ -1,0 +1,37 @@
+Este documento vai servir de esclarecimento de algumas funções da Minilibx.
+Torna o programa mais percetível para o avaliador e também para mim à medida que vou fazendo o projeto.
+
+mlx_init() -> Inicializa a biblioteca Minilibx
+mlx_new_window() -> Cria uma janela interativa
+mlx_loop() -> Deixa a janela aberta enquanto espera por um evento (ação).
+mlx_key_hook() -> Tem como paramentros o ponteiro para janela, uma função e o terceiro parametro que é irrevelativo neste projeto.
+Dependendo da tecla que pressionamos vai ser executado um evento.
+mlx_hook() -> Funciona como a função mlx_key_hook(), mas tem mais parametros, e não se baseia em que tecla pressionamos mas sim onde clicamos com o rato.
+EXAMPLE: x_event 17 é o butão "X" no canto superior direito.
+
+
+
+
+
+
+|----- Parte Matemática ----- |
+
+O que é um fractal?
+Um fractal é um padrão sem fim. 
+Fractais são padrões infinitamente complexos que são autossimilares em diferentes escalas.
+
+Números complexos
+Na estrutura eu já explico como se cria um número complexo mas aqui vai mais um exemplo.
+Um plano complexo é um meio para representar geograficamente números complexos.
+plano_complexo = a + bi são representados como coordenadas (a,b) //a sendo um número real e b um número imaginário.
+
+O que é um Mandelbrot set?
+Conjunto de Mandelbrot é um fractal definido como o conjunto de pontos 'c' no plano complexo para o qual a sucessão definida recursivamente:
+Z(0) = 0
+Z(n + 1) = Z(n)² + C (a equação é a mesma para desenhar o Julia set)
+
+Para cada ponto c do plano complexo, a sequência vai aumentando:
+Ver em -> https://pt.wikipedia.org/wiki/Conjunto_de_Mandelbrot
+
+O que é um Julia set?
+Julia set tal como o Mandelbrot é um fractal, mas na equação o valor C é fixo.
