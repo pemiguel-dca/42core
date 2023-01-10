@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:45:39 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/09 13:36:59 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:05:05 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	max(t_stack *stack)
 
 	i = stack->pos_top;
 	max = stack->array[i];
-	while (i < stack->size)
+	while (i < stack->size + stack->pos_top)
 	{
 		if (stack->array[i] > max)
 			max = stack->array[i];
@@ -48,34 +48,4 @@ int	mid_sorted(int *array, int size)
 {
 	proper_sort(array, size);
 	return (array[size / 2]);
-}
-
-int	find_pos_beg(int nb, t_stack *stack)
-{
-	int	i;
-	int	returns;
-
-	i = stack->pos_top;
-	returns = 0;
-	while (stack->array[i] != nb)
-	{
-		i++;
-		returns++;
-	}
-	return (returns);
-}
-
-int	find_pos_end(int nb, t_stack *stack)
-{
-	int	i;
-	int	returns;
-
-	i = stack->size - 1;
-	returns = 0;
-	while (stack->array[i] != nb)
-	{
-		i--;
-		returns++;
-	}
-	return (returns);
 }
