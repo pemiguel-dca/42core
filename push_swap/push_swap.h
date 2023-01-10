@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/09 17:08:40 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:10:30 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		ft_memcmp(void *str1, void *str2, size_t n);
 t_stack	*create_arr(char **args, int size);
 
 //lets_sort
-void	lets_sort(int *array, t_stack *a, t_stack *b);
+void	lets_sort(t_stack *a, t_stack *b);
 
 //sort normal
 int		*copy_stack(t_stack *stack);

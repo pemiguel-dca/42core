@@ -6,15 +6,14 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:25:24 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/09 17:09:13 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:10:42 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_all(int *copy, t_stack *a, t_stack *b, t_stack *duplicate_positive)
+void	free_all(t_stack *a, t_stack *b, t_stack *duplicate_positive)
 {
-	free(copy);
 	free(a->array);
 	free(a);
 	free(b->array);
@@ -68,7 +67,6 @@ int	main(int args, char *argv[])
 	t_stack			*a;
 	t_stack			*b;
 	t_stack			*duplicate_positive;
-	int				*copy;
 
 	if (args == 1)
 	{
@@ -77,12 +75,10 @@ int	main(int args, char *argv[])
 	}
 	a = create_arr(argv, (args - 1));
 	b = init(a);
-	copy = copy_stack(a);
-	proper_sort(copy, a->size);
 	duplicate_positive = duplicate_list(a);
 	if (a->size > 5)
 		sort_with_radix(duplicate_positive, b);
 	else
-		lets_sort(copy, a, b);
-	free_all(copy, a, b, duplicate_positive);
+		lets_sort(duplicate_positive, b);
+	free_all(a, b, duplicate_positive);
 }
