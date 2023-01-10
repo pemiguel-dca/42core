@@ -6,21 +6,25 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:38:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/08 15:54:23 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/10 21:59:50 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	*ft_putstr(char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (str[i])
-		write(STDOUT_FILENO, &str[i++], 1);
-	write(1, "\n", 1);
-	return (0);
+	if (s)
+	{
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
+	}
 }
 
 int	ft_strcmp(char *s1, char *s2)

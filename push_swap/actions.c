@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:03:12 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/10 17:11:22 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:17:26 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	swap_one_stack(char *name_ac, t_stack *stack, int how_much)
 {
 	swap(&stack->array[stack->pos_top], &stack->array[stack->pos_top + 1]);
 	if (how_much == 1)
-		ft_putstr(name_ac);
+		ft_putstr_fd(name_ac, STDOUT_FILENO);
 }
 
 void	rotate_one_stack(char *name_ac, t_stack *stack, int how_much)
@@ -42,7 +42,7 @@ void	rotate_one_stack(char *name_ac, t_stack *stack, int how_much)
 	}
 	stack->array[i] = first_number;
 	if (how_much == 1)
-		ft_putstr(name_ac);
+		ft_putstr_fd(name_ac, STDOUT_FILENO);
 }
 
 void	push_b(char *name_ac, t_stack *a, t_stack *b)
@@ -63,7 +63,7 @@ void	push_b(char *name_ac, t_stack *a, t_stack *b)
 	}
 	b->array[b->pos_top] = a->array[a->pos_top];
 	a->pos_top++;
-	ft_putstr(name_ac);
+	ft_putstr_fd(name_ac, STDOUT_FILENO);
 }
 
 void	push_a(char *name_ac, t_stack *a, t_stack *b)
@@ -74,5 +74,5 @@ void	push_a(char *name_ac, t_stack *a, t_stack *b)
 	a->array[a->pos_top] = b->array[b->pos_top];
 	b->pos_top++;
 	b->size--;
-	ft_putstr(name_ac);
+	ft_putstr_fd(name_ac, STDOUT_FILENO);
 }

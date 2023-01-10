@@ -6,28 +6,27 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:21:54 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/10 18:10:30 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:20:57 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define STD_ERROR 2
 # define ONLY_MINUS "-"
 
 //Actions available
-# define SA "sa"
-# define SB "sb"
-# define SS "ss"
-# define PA "pa"
-# define PB "pb"
-# define RA "ra"
-# define RB "rb"
-# define RR "rr"
-# define RRA "rra"
-# define RRB "rrb"
-# define RRR "rrr"
+# define SA "sa\n"
+# define SB "sb\n"
+# define SS "ss\n"
+# define PA "pa\n"
+# define PB "pb\n"
+# define RA "ra\n"
+# define RB "rb\n"
+# define RR "rr\n"
+# define RRA "rra\n"
+# define RRB "rrb\n"
+# define RRR "rrr\n"
 
 # include <unistd.h>
 # include <stdio.h>
@@ -45,29 +44,25 @@ size_t	ft_strlen(char *str);
 int		ft_atoi(char *str);
 int		ft_isdigit(int arg);
 int		ft_get_index(int *str1, int *str2);
-int		ft_memcmp(void *str1, void *str2, size_t n);
+int		len_dec(int n);
 
 t_stack	*create_arr(char **args, int size);
 
 //lets_sort
-void	lets_sort(t_stack *a, t_stack *b);
+void	lets_sort(int *copy_arr, t_stack *a, t_stack *b);
 
 //sort normal
 int		*copy_stack(t_stack *stack);
 void	proper_sort(int *tab, int size);
-void	proper_sort_b(int *tab, int size);
 
-//str
-void	*ft_putstr(char *str);
+//write_term
+void	ft_putstr_fd(char *s, int fd);
 int		ft_strcmp(char *s1, char *s2);
 
 //max&min
 int		max(t_stack *stack);
 int		min(t_stack *stack);
 int		mid_sorted(int *array, int size);
-int		mid_sorted_for_b(int *array, int size);
-int		find_pos_beg(int nb, t_stack *stack);
-int		find_pos_end(int nb, t_stack *stack);
 
 //actions
 void	swap(int *first, int *second);
@@ -86,14 +81,16 @@ void	rrr(char *name_ac, t_stack *a, t_stack *b);
 void	when_size_3(t_stack *a);
 void	*ft_calloc(size_t nitems, size_t size);
 
-//new idea
+//sort_complex
 t_stack	*duplicate_list(t_stack *a);
 t_stack	*init(t_stack *a);
 void	sort_with_radix(t_stack *dup, t_stack *b);
 int		compare_stack(int *array, t_stack *stack);
 
+//create_arr
 int		check_duplicates(char **argv, int size);
 int		check_int_value(char **argv);
 int		check_arr(char **argv);
 int		check_only_minus(char **argv);
+
 #endif

@@ -6,20 +6,21 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:25:24 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/10 18:10:42 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:27:23 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_all(t_stack *a, t_stack *b, t_stack *duplicate_positive)
+void	free_all(int *copy_arr, t_stack *a, t_stack *b, t_stack *dup)
 {
+	free(copy_arr);
 	free(a->array);
 	free(a);
 	free(b->array);
 	free(b);
-	free(duplicate_positive->array);
-	free(duplicate_positive);
+	free(dup->array);
+	free(dup);
 }
 
 t_stack	*create_arr(char **argv, int size)
@@ -28,12 +29,12 @@ t_stack	*create_arr(char **argv, int size)
 	t_stack	*stack_a;
 
 	i = 0;
-	stack_a = malloc(sizeof (*stack_a));
-	if (!stack_a)
-		return (NULL);
 	if (!check_duplicates(argv, size) && !check_only_minus(argv)
 		&& !check_int_value(argv) && !check_arr(argv))
 	{
+		stack_a = malloc(sizeof (*stack_a));
+		if (!stack_a)
+			return (NULL);
 		stack_a->array = malloc(size * sizeof(int));
 		stack_a->size = size;
 		stack_a->pos_top = 0;
@@ -45,7 +46,7 @@ t_stack	*create_arr(char **argv, int size)
 	}
 	else
 	{
-		ft_putstr("Error!");
+		ft_putstr_fd("Error!\n", STDERR_FILENO);
 		exit(0);
 	}
 	return (stack_a);
@@ -67,18 +68,18 @@ int	main(int args, char *argv[])
 	t_stack			*a;
 	t_stack			*b;
 	t_stack			*duplicate_positive;
+	int				*copy_arr;
 
 	if (args == 1)
-	{
-		ft_putstr("Please add some arguments.");
 		exit(0);
-	}
 	a = create_arr(argv, (args - 1));
 	b = init(a);
 	duplicate_positive = duplicate_list(a);
-	if (a->size > 5)
+	copy_arr = copy_stack(duplicate_positive);
+	proper_sort(copy_arr, duplicate_positive->size);
+	if (a->size > 5 && compare_stack(copy_arr, duplicate_positive))
 		sort_with_radix(duplicate_positive, b);
 	else
-		lets_sort(duplicate_positive, b);
-	free_all(a, b, duplicate_positive);
+		lets_sort(copy_arr, duplicate_positive, b);
+	free_all(copy_arr, a, b, duplicate_positive);
 }

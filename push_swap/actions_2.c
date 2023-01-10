@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:09:08 by pemiguel          #+#    #+#             */
-/*   Updated: 2022/12/07 15:51:05 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:08:33 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,26 @@ void	rr_one_stack(char *name_ac, t_stack *stack, int how_much)
 	}
 	stack->array[i] = first_number;
 	if (how_much == 1)
-		ft_putstr(name_ac);
+		ft_putstr_fd(name_ac, STDOUT_FILENO);
 }
 
 void	ss(char *name_ac, t_stack *a, t_stack *b)
 {
 	swap_one_stack(SA, a, 2);
 	swap_one_stack(SB, b, 2);
-	ft_putstr(name_ac);
+	ft_putstr_fd(name_ac, STDOUT_FILENO);
 }
 
 void	rr(char *name_ac, t_stack *a, t_stack *b)
 {
 	rotate_one_stack(RA, a, 2);
 	rotate_one_stack(RB, b, 2);
-	ft_putstr(name_ac);
+	ft_putstr_fd(name_ac, STDOUT_FILENO);
 }
 
 void	rrr(char *name_ac, t_stack *a, t_stack *b)
 {
 	rr_one_stack(RRA, a, 2);
 	rr_one_stack(RRB, b, 2);
-	ft_putstr(name_ac);
+	ft_putstr_fd(name_ac, STDOUT_FILENO);
 }

@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:31:07 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/09 17:10:24 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/10 21:51:53 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,26 @@ size_t	ft_strlen(char *str)
 
 void	when_size_3(t_stack *a)
 {
-	if (a->array[0] < a->array[1] && a->array[0] < a->array[2]
-		&& a->array[1] == max(a))
+	if (a->array[a->pos_top] < a->array[a->pos_top + 1]
+		&& a->array[a->pos_top] < a->array[a->pos_top + 2]
+		&& a->array[a->pos_top + 1] == max(a))
 	{
 		swap_one_stack(SA, a, 1);
 		rotate_one_stack(RA, a, 1);
 	}
-	else if (a->array[2] == max(a) && a->array[1] == min(a))
+	else if (a->array[a->pos_top + 2] == max(a)
+		&& a->array[a->pos_top + 1] == min(a))
 		swap_one_stack(SA, a, 1);
-	else if (a->array[0] == max(a) && a->array[2] == min(a))
+	else if (a->array[a->pos_top] == max(a)
+		&& a->array[a->pos_top + 2] == min(a))
 	{
 		swap_one_stack(SA, a, 1);
 		rr_one_stack(RRA, a, 1);
 	}
-	else if (a->array[0] == max(a) && a->array[1] == min(a))
+	else if (a->array[a->pos_top] == max(a)
+		&& a->array[a->pos_top + 1] == min(a))
 		rotate_one_stack(RA, a, 1);
-	else if (a->array[1] == max(a) && a->array[2] == min(a))
+	else if (a->array[a->pos_top + 1] == max(a)
+		&& a->array[a->pos_top + 2] == min(a))
 		rr_one_stack(RRA, a, 1);
 }

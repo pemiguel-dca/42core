@@ -6,7 +6,7 @@
 /*   By: pemiguel <pemiguel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:49:19 by pemiguel          #+#    #+#             */
-/*   Updated: 2023/01/05 22:12:21 by pemiguel         ###   ########.fr       */
+/*   Updated: 2023/01/10 21:46:30 by pemiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,22 @@ int	ft_get_index(int *str1, int *str2)
 	return (i);
 }
 
-int	ft_memcmp(void *str1, void *str2, size_t n)
+int	len_dec(int n)
 {
-	size_t	i;
+	int	len;
 
-	i = 0;
-	while (i < n)
+	len = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
 	{
-		if (((unsigned int *)str1)[i] != ((unsigned int *)str2)[i])
-			return (((int *)str1)[i] - ((int *)str2)[i]);
-		i++;
+		len++;
+		n = -n;
 	}
-	return (0);
+	while (n != 0)
+	{
+		n = n / 10;
+		len++;
+	}
+	return (len);
 }
